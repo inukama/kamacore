@@ -1,0 +1,4 @@
+build/
+# output of iverilog
+*.vvp
+*.vcd

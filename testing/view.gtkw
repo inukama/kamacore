@@ -1,0 +1,115 @@
+[*]
+[*] GTKWave Analyzer v3.3.123 (w)1999-2025 BSI
+[*] Wed Aug  6 19:35:17 2025
+[*]
+[dumpfile] "/home/kommy/projects/hardware/nvidia2/testing/cpu_testbench.vcd"
+[dumpfile_mtime] "Wed Aug  6 19:31:54 2025"
+[dumpfile_size] 20684025
+[savefile] "/home/kommy/projects/hardware/nvidia2/testing/view.gtkw"
+[timestart] 2433000
+[size] 1916 977
+[pos] -1 -1
+*-20.100002 3980000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] single_cycle_core_Test_Bench.
+[treeopen] single_cycle_core_Test_Bench.single_cycle_core_inst.
+[sst_width] 290
+[signals_width] 342
+[sst_expanded] 1
+[sst_vpaned_height] 265
+@28
+single_cycle_core_Test_Bench.single_cycle_core_inst.clk
+single_cycle_core_Test_Bench.single_cycle_core_inst.reset
+@29
+single_cycle_core_Test_Bench.single_cycle_core_inst.seg[6:0]
+@28
+single_cycle_core_Test_Bench.single_cycle_core_inst.io_write_controller.d0[6:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.io_write_controller.d1[6:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.io_write_controller.d2[6:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.io_write_controller.d3[6:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[0][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[1][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[2][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[3][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[4][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[5][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[6][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[7][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[8][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[9][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[10][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[11][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[12][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[13][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[14][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.register_file_instantiation.\file[15][15:0]
+@420
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.ADDRESS_WIDTH
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.BUS_WIDTH
+@28
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[0][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[1][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[2][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[3][15:0]
+@22
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[4][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[5][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[6][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[7][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[8][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[9][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[10][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[11][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[12][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[13][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[14][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[15][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[16][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[17][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[18][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[19][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[20][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[21][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[22][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[23][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[24][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[25][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[26][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[27][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[28][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[29][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[30][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[31][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[32][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[33][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[34][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[35][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[36][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[37][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[38][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[39][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[40][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[41][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[42][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[43][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[44][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[45][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[46][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[47][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[48][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[49][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[50][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[51][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[52][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[53][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[54][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[55][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[56][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[57][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[58][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[59][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[60][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[61][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[62][15:0]
+single_cycle_core_Test_Bench.single_cycle_core_inst.data_mem.\memory[63][15:0]
+[pattern_trace] 1
+[pattern_trace] 0
