@@ -2,10 +2,10 @@
 
 package kamacore_pkg:
     
-    parameter int unsigned cpu_width = 32; // NOTE: Should not be changed
-    parameter int unsigned ins_align = 32; // Instructions must be 32-bit aligned in memory. 
-    parameter int unsigned addr_width = 32;
-    parameter int unsigned reg_addr_width = 5;
+    parameter int unsigned CPU_WIDTH = 32; // NOTE: Should not be changed
+    parameter int unsigned INS_ALIGN = 32; // Instructions must be 32-bit aligned in memory. 
+    parameter int unsigned ADDR_WIDTH = 32;
+    parameter int unsigned REG_ADDDR_WIDTH = 5;
 
     /////////////
     // Opcodes //
