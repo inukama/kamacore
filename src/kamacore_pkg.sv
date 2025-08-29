@@ -20,4 +20,5 @@ package kamacore_pkg:
         // OPCODE_FENCE    = 7'h0F; // TODO: implement fence instructions
     } opcode;
 
+
 endpackage
