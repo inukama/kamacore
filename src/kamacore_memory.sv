@@ -1,0 +1,26 @@
+
+// Based on https://docs.amd.com/r/en-US/ug901-vivado-synthesis/Dual-Port-RAM-with-Asynchronous-Read-Coding-Verilog-Example
+module kamacore_memory #(
+    parameter MEM_ADDR_WIDTH = ADDR_WIDTH,
+    parameter RAM_SIZE = 1024
+) (
+    input clk,
+
+    input we, // write enable
+    input [MEM_ADDR_WIDTH-1:0] a, // address
+    input [MEM_ADDR_WIDTH-1:0] dpra, // dual port read address
+    input [CPU_WIDTH-1:0] di, // data in
+
+    output [CPU_WIDTH-1:0] spo, // single port output
+    output [CPU_WIDTH-1:0] dpo // dual port output
+);
+
+    logic [CPU_WIDTH-1:0] ram [RAM_SIZE-1:0];
+
+    always_ff @(posedge clk) begin
+        ram[a] <= di;
+    end
+
+    assign spo = ram[a];
+    assign dpo = ram[dpra]; 
+endmodule
