@@ -17,6 +17,13 @@ module kamacore_memory #(
 
     logic [CPU_WIDTH-1:0] ram [RAM_SIZE-1:0];
 
+
+
+    // TODO: Debug only
+    initial begin
+        ram[3] = {12'd7, 5'd0, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE};
+    end
+
     always_ff @(posedge clk) begin
         ram[a] <= di;
     end

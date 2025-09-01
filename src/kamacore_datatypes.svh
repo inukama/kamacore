@@ -3,6 +3,7 @@ parameter int unsigned CPU_WIDTH = 32; // NOTE: Should not be changed
 // parameter int unsigned INS_ALIGN = 32; // Instructions must be 32-bit aligned in memory. 
 parameter int unsigned ADDR_WIDTH = 32;
 parameter int unsigned REG_ADDR_WIDTH = 5;
+parameter int unsigned OPCODE_WIDTH = 7;
 
 /////////////
 // Opcodes //
