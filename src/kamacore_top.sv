@@ -8,8 +8,8 @@
 `include "kamacore_memory.sv"
 
 module kamacore_top(
-    input clk,
-    input rst
+    input logic clk,
+    input logic rst
 );
     logic [CPU_WIDTH-1:0] writeback_result;
 

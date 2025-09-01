@@ -4,15 +4,15 @@ module kamacore_memory #(
     parameter MEM_ADDR_WIDTH = ADDR_WIDTH,
     parameter RAM_SIZE = 1024
 ) (
-    input clk,
+    input logic clk,
 
-    input we, // write enable
-    input [MEM_ADDR_WIDTH-1:0] a, // address
-    input [MEM_ADDR_WIDTH-1:0] dpra, // dual port read address
-    input [CPU_WIDTH-1:0] di, // data in
+    input logic we, // write enable
+    input logic [MEM_ADDR_WIDTH-1:0] a, // address
+    input logic [MEM_ADDR_WIDTH-1:0] dpra, // dual port read address
+    input logic [CPU_WIDTH-1:0] di, // data in
 
-    output [CPU_WIDTH-1:0] spo, // single port output
-    output [CPU_WIDTH-1:0] dpo // dual port output
+    output logic [CPU_WIDTH-1:0] spo, // single port output
+    output logic [CPU_WIDTH-1:0] dpo // dual port output
 );
 
     logic [CPU_WIDTH-1:0] ram [RAM_SIZE-1:0];

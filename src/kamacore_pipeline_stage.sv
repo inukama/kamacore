@@ -1,7 +1,7 @@
 interface kamacore_pipeline_stage (
-    input clk,
-    input rst,
-    input hold
+    input logic clk,
+    input logic rst,
+    input logic hold
 );
     logic [CPU_WIDTH-1:0] data_memory_result;
     logic [CPU_WIDTH-1:0] instruction;

@@ -3,9 +3,9 @@
 ///////////////////////
 
 module kamacore_stage_if (
-    input clk,
-    input rst,
-    input branch_valid,
+    input logic clk,
+    input logic rst,
+    input logic branch_valid,
     kamacore_pipeline_stage pipeline_if_id
 );
     // Program counter
@@ -25,8 +25,8 @@ module kamacore_stage_if (
     );
     
     // Stage buffering
-    always_ff @(posedge clk, posedge rst) begin
-        if (rst) begin
+    always_ff @(posedge clk) begin
+        if (~rst) begin
             pipeline_if_id.instruction <= '0;
             program_counter <= '0;
         end else begin
