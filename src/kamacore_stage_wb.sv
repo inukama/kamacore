@@ -2,8 +2,9 @@
 // Writeback //
 ///////////////
 
-module stage_wb (
-    pipeline_stage pipeline_wb
+module kamacore_stage_wb (
+    kamacore_pipeline_stage pipeline_mem_wb,
+    output logic writeback_result
 );
-    // TODO: Implement 
+    // Decide writeback result
 endmodule

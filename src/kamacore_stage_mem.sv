@@ -2,8 +2,10 @@
 // Memory stage //
 //////////////////
 
-module stage_mem (
-    pipeline_stage pipeline_mem 
+module kamacore_stage_mem (
+    kamacore_pipeline_stage pipeline_ex_mem, 
+    kamacore_pipeline_stage pipeline_mem_wb
 );
-    // TODO: Implement 
+    // Temporarily: Access unmapped SRAM data memory
+    // Stage buffer
 endmodule

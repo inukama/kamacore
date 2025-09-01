@@ -2,8 +2,11 @@
 // Instruction Fetch //
 ///////////////////////
 
-module stage_if (
-    pipeline_stage pipeline_if
+module kamacore_stage_if (
+    input branch_valid,
+    kamacore_pipeline_stage pipeline_if_id
 );
-    // TODO: Implement 
+    // Program counter
+    // Access instruction memory
+    // Stage buffer
 endmodule

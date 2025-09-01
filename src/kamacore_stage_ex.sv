@@ -1,10 +1,11 @@
-
 ///////////////////
 // Execute stage //
 ///////////////////
 
-module stage_ex (
-    pipeline_stage pipeline_ex
+module kamacore_stage_ex (
+    kamacore_pipeline_stage pipeline_id_ex,
+    kamacore_pipeline_stage pipeline_ex_id
 );
-    // TODO: Implement 
+    // Arithmetic Logic Unit
+    // Stage buffer
 endmodule

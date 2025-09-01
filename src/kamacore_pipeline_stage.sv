@@ -1,7 +1,6 @@
-
-interface pipeline_stage (
+interface kamacore_pipeline_stage (
     input clk,
-    input clear,
+    input rst,
     input hold
 );
     logic [CPU_WIDTH-1:0] data_memory_result;
@@ -17,6 +16,6 @@ interface pipeline_stage (
     logic control_write_register;
     logic control_alu_use_immediate;
 
-    // TODO: Write functions for testing
+    // TODO: Write functions and assertions for testing 
 
 endinterface
