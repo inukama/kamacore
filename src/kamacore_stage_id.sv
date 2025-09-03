@@ -6,8 +6,8 @@ module kamacore_stage_id (
     input logic clk,
     input logic rst,
     input logic writeback_rd_we,
-    input logic [CPU_WIDTH-1:0] writeback_rd_a,
-    input logic [REG_ADDR_WIDTH-1:0] writeback_rd_data,
+    input logic [REG_ADDR_WIDTH-1:0] writeback_rd_a,
+    input logic [CPU_WIDTH-1:0] writeback_rd_data,
     kamacore_pipeline_stage pipeline_if_id,
     kamacore_pipeline_stage pipeline_id_ex
 );
@@ -21,15 +21,15 @@ module kamacore_stage_id (
         .clk(clk),
         .rst(rst),
 
-        .rs1_a(pipeline_if_id.instruction[19:15]),
-        .rs1_data(rs1_data),
+        .source1_a(pipeline_if_id.instruction[19:15]),
+        .source1_data(rs1_data),
 
-        .rs2_a(pipeline_if_id.instruction[24:20]),
-        .rs2_data(rs2_data),
+        .source2_a(pipeline_if_id.instruction[24:20]),
+        .source2_data(rs2_data),
 
-        .rd_we(writeback_rd_we),
-        .rd_a(writeback_rd_a),
-        .rd_data(writeback_rd_data)
+        .destination_we(writeback_rd_we),
+        .destination_a(writeback_rd_a),
+        .destination_data(writeback_rd_data)
     );
 
     // Generate control signals

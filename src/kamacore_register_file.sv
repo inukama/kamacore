@@ -3,15 +3,15 @@ module kamacore_register_file(
     input clk,
     input rst,
 
-    input logic [REG_ADDR_WIDTH-1:0] rs1_a,
-    output logic [CPU_WIDTH-1:0] rs1_data,
+    input logic [REG_ADDR_WIDTH-1:0] source1_a,
+    output logic [CPU_WIDTH-1:0] source1_data,
 
-    input logic [REG_ADDR_WIDTH-1:0] rs2_a,
-    output logic [CPU_WIDTH-1:0] rs2_data,
+    input logic [REG_ADDR_WIDTH-1:0] source2_a,
+    output logic [CPU_WIDTH-1:0] source2_data,
 
-    input logic rd_we,
-    input logic [REG_ADDR_WIDTH-1:0] rd_a,
-    input logic [CPU_WIDTH-1:0] rd_data
+    input logic destination_we,
+    input logic [REG_ADDR_WIDTH-1:0] destination_a,
+    input logic [CPU_WIDTH-1:0] destination_data
 );
 
     localparam REGISTER_COUNT = 2 ** REG_ADDR_WIDTH;
@@ -20,14 +20,14 @@ module kamacore_register_file(
 
     always_ff @(posedge clk) begin
         for (int i = 0; i < $size(registers); i++) begin  
-            registers[i] <= (rd_we && (i == rd_a)) ? rd_data : registers[i];
+            registers[i] <= (destination_we && (i == destination_a)) ? destination_data : registers[i];
             if (rst) begin
                 registers[i] <= '0;
             end 
         end
     end
 
-    assign rs1_data = (rd_we && (rd_a == rs1_a)) ? rd_data : registers[rs1_a];
-    assign rs2_data = (rd_we && (rd_a == rs2_a)) ? rd_data : registers[rs2_a];
+    assign source1_data = (destination_we && (destination_a == source1_a)) ? destination_data : registers[source1_a];
+    assign source2_data = (destination_we && (destination_a == source2_a)) ? destination_data : registers[source2_a];
 
 endmodule

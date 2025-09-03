@@ -7,14 +7,15 @@
 `include "kamacore_stage_wb.sv"
 `include "kamacore_memory.sv"
 `include "kamacore_register_file.sv"
+`include "kamacore_alu.sv"
 
 module kamacore_top(
     input logic clk,
     input logic rst
 );
     logic writeback_rd_we;
-    logic [CPU_WIDTH-1:0] writeback_rd_a;
-    logic [REG_ADDR_WIDTH-1:0] writeback_rd_data;
+    logic [REG_ADDR_WIDTH-1:0] writeback_rd_a;
+    logic [CPU_WIDTH-1:0] writeback_rd_data;
 
     kamacore_pipeline_stage stage_if_id(clk, rst);
     kamacore_pipeline_stage stage_id_ex(clk, rst);
@@ -41,7 +42,7 @@ module kamacore_top(
     kamacore_stage_ex stage_ex(
         .clk(clk), .rst(rst),
         .pipeline_id_ex(stage_id_ex),
-        .pipeline_ex_id(stage_ex_mem)
+        .pipeline_ex_mem(stage_ex_mem)
     );
 
     kamacore_stage_mem stage_mem(
