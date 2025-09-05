@@ -19,4 +19,8 @@ typedef enum logic [6:0] {
     OPCODE_R_TYPE   = 7'h33,
     OPCODE_EXCEPT   = 7'h73
     // OPCODE_FENCE    = 7'h0F // TODO: implement fence instructions
-} opcode;
+} e_opcode;
+
+typedef struct packed {
+    logic rd_we; // Write enable for rd register to be used in writeback stage
+} st_control_signals;

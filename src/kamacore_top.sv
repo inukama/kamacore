@@ -8,6 +8,7 @@
 `include "kamacore_memory.sv"
 `include "kamacore_register_file.sv"
 `include "kamacore_alu.sv"
+`include "kamacore_control_unit.sv"
 
 module kamacore_top(
     input logic clk,

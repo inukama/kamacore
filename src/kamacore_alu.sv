@@ -9,8 +9,7 @@ module kamacore_alu(
 
     output logic [CPU_WIDTH-1:0] alu_result
 );
-
-
+    // TODO: Control ALU through control signals rather than instruction directly
     logic [6:0] opcode7 = instruction[6:0];
     logic [2:0] funct3 = instruction[14:12]; 
     logic [6:0] funct7 = instruction[31:25];

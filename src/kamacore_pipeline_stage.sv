@@ -14,6 +14,7 @@ interface kamacore_pipeline_stage (
     logic control_write_rd;
     logic control_write_register;
     logic control_alu_use_immediate;
+    st_control_signals control_signals;
 
     // TODO: Write functions and assertions for testing 
 

@@ -27,10 +27,12 @@ module kamacore_stage_mem (
             pipeline_mem_wb.alu_result <= '0;
             pipeline_mem_wb.instruction <= '0;
             pipeline_mem_wb.data_memory_result <= '0;
+            pipeline_mem_wb.control_signals <= '0;
         end else begin
             pipeline_mem_wb.alu_result <= pipeline_ex_mem.alu_result;
             pipeline_mem_wb.instruction <= pipeline_ex_mem.instruction;
             pipeline_mem_wb.data_memory_result <= data_memory_result;
+            pipeline_mem_wb.control_signals <= pipeline_ex_mem.control_signals;
         end
     end
 endmodule

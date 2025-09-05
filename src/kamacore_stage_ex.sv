@@ -24,9 +24,11 @@ module kamacore_stage_ex (
         if (~rst) begin
             pipeline_ex_mem.alu_result <= '0;
             pipeline_ex_mem.instruction <= '0;
+            pipeline_ex_mem.control_signals <= '0;
         end else begin
             pipeline_ex_mem.alu_result <= alu_result;
             pipeline_ex_mem.instruction <= pipeline_id_ex.instruction;
+            pipeline_ex_mem.control_signals <= pipeline_id_ex.control_signals;
         end
     end
 endmodule

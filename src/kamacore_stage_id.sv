@@ -12,9 +12,6 @@ module kamacore_stage_id (
     kamacore_pipeline_stage pipeline_id_ex
 );
     // Access register file
-
-
-
     logic [CPU_WIDTH-1:0] rs1_data;
     logic [CPU_WIDTH-1:0] rs2_data;
     kamacore_register_file register_file(
@@ -33,17 +30,24 @@ module kamacore_stage_id (
     );
 
     // Generate control signals
+    st_control_signals control_signals;
+    kamacore_control_unit control_unit(
+        .instruction(pipeline_if_id.instruction),
+        .control_signals(control_signals)
+    );
+    
     // Stage buffer
-
     always_ff @(posedge clk) begin
         if (~rst) begin
             pipeline_id_ex.instruction <= '0;
             pipeline_id_ex.rs1_data <= '0;
             pipeline_id_ex.rs2_data <= '0;
+            pipeline_id_ex.control_signals <= '0;
         end else begin
             pipeline_id_ex.instruction <= pipeline_if_id.instruction;
             pipeline_id_ex.rs1_data <= rs1_data;
             pipeline_id_ex.rs2_data <= rs2_data;
+            pipeline_id_ex.control_signals <= control_signals;
         end
     end
 endmodule
