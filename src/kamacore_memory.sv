@@ -21,7 +21,9 @@ module kamacore_memory #(
 
     // TODO: Debug only
     initial begin
-        ram[3] = {12'd7, 5'd0, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE};
+        for (int i = 3; i < 10; i++) begin
+            ram[i] = {12'd7, 5'd0, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE};
+        end
     end
 
     always_ff @(posedge clk) begin

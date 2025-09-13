@@ -13,8 +13,6 @@ module kamacore_stage_ex (
     kamacore_alu alu(
         .source1(pipeline_id_ex.rs1_data),
         .source2(pipeline_id_ex.rs2_data),
-        .imm32i(),
-        .imm32u(),
         .instruction(pipeline_id_ex.instruction),
         .alu_result(alu_result)
     );
