@@ -9,6 +9,8 @@
 `include "kamacore_register_file.sv"
 `include "kamacore_alu.sv"
 `include "kamacore_control_unit.sv"
+`include "kamacore_forwarding_if.sv"
+`include "kamacore_forwarding_unit.sv"
 
 module kamacore_top(
     input logic clk,
@@ -22,6 +24,14 @@ module kamacore_top(
     kamacore_pipeline_stage stage_id_ex(clk, rst);
     kamacore_pipeline_stage stage_ex_mem(clk, rst);
     kamacore_pipeline_stage stage_mem_wb(clk, rst);
+
+    kamacore_forwarding_if forwarding_id_rs1();
+    kamacore_forwarding_if forwarding_id_rs2();
+    kamacore_forwarding_if forwarding_ex_rs1();
+    kamacore_forwarding_if forwarding_ex_rs2();
+    kamacore_forwarding_if forwarding_ex_result();
+    kamacore_forwarding_if forwarding_mem_result();
+    kamacore_forwarding_if forwarding_wb_result();
 
     /* verilator lint_off PINCONNECTEMPTY */
     kamacore_stage_if stage_if(
@@ -37,19 +47,28 @@ module kamacore_top(
 
         .writeback_rd_we(writeback_rd_we),
         .writeback_rd_a(writeback_rd_a),
-        .writeback_rd_data(writeback_rd_data)
+        .writeback_rd_data(writeback_rd_data),
+
+        .forwarding_rs1(forwarding_id_rs1),
+        .forwarding_rs2(forwarding_id_rs2)
     );
 
     kamacore_stage_ex stage_ex(
         .clk(clk), .rst(rst),
         .pipeline_id_ex(stage_id_ex),
-        .pipeline_ex_mem(stage_ex_mem)
+        .pipeline_ex_mem(stage_ex_mem),
+
+        .forwarding_rs1(forwarding_ex_rs1),
+        .forwarding_rs2(forwarding_ex_rs2),
+        .forwarding_result(forwarding_ex_result)
     );
 
     kamacore_stage_mem stage_mem(
         .clk(clk), .rst(rst),
         .pipeline_ex_mem(stage_ex_mem),
-        .pipeline_mem_wb(stage_mem_wb)
+        .pipeline_mem_wb(stage_mem_wb),
+
+        .forwarding(forwarding_mem_result)
     );
 
     kamacore_stage_wb stage_wb(
@@ -58,8 +77,20 @@ module kamacore_top(
 
         .writeback_rd_we(writeback_rd_we),
         .writeback_rd_a(writeback_rd_a),
-        .writeback_rd_data(writeback_rd_data)
+        .writeback_rd_data(writeback_rd_data),
+
+        .forwarding(forwarding_wb_result)
     );
     /* verilator lint_on PINCONNECTEMPTY */
+
+    kamacore_forwarding_unit forwarding_unit(
+        .forwarding_id_rs1(forwarding_id_rs1),
+        .forwarding_id_rs2(forwarding_id_rs2),
+        .forwarding_ex_rs1(forwarding_ex_rs1),
+        .forwarding_ex_rs2(forwarding_ex_rs2),
+        .forwarding_ex_result(forwarding_ex_result),
+        .forwarding_mem_result(forwarding_mem_result),
+        .forwarding_wb_result(forwarding_wb_result)
+    );
 
 endmodule

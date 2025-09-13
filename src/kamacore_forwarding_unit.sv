@@ -1,98 +1,64 @@
-module kamacore_forwarding_unit (
-    input wire clk,
-    input wire reset,
 
-    input wire [3:0] ID_register_a,
-    input wire [15:0] ID_data_a,
-    input wire [3:0] ID_register_b,
-    input wire [15:0] ID_data_b,
+interface kamacore_forwarding_unit (
+    kamacore_forwarding_if forwarding_id_rs1,
+    kamacore_forwarding_if forwarding_id_rs2,
+    kamacore_forwarding_if forwarding_ex_rs1,
+    kamacore_forwarding_if forwarding_ex_rs2,
 
-    input wire [3:0] EX_register_a,
-    input wire [15:0] EX_data_a,
-    input wire [3:0] EX_register_b,
-    input wire [15:0] EX_data_b,
-
-    input wire [15:0] EX_result,
-    input wire [3:0] EX_destination_register,
-    input wire EX_control_write_register,
-
-    input wire [15:0] MEM_result,
-    input wire [3:0] MEM_destination_register,
-    input wire MEM_control_write_register,
-
-    input wire [15:0] WB_result,
-    input wire [3:0] WB_destination_register,
-    input wire WB_control_write_register,
-
-    output reg [15:0] ID_forwarded_data_a,
-    output reg [15:0] ID_forwarded_data_b,
-
-    output reg [15:0] EX_forwarded_data_a,
-    output reg [15:0] EX_forwarded_data_b
+    kamacore_forwarding_if forwarding_ex_result,
+    kamacore_forwarding_if forwarding_mem_result,
+    kamacore_forwarding_if forwarding_wb_result
 );
+
+    // Forward ID rs1
     always_comb begin
-        EX_forwarded_data_a = EX_data_a;
-        EX_forwarded_data_b = EX_data_b;
-
-        if (EX_register_a != 0) begin
-            if (MEM_control_write_register && MEM_destination_register == EX_register_a) begin
-                EX_forwarded_data_a = MEM_result;
-            end else if (WB_control_write_register && WB_destination_register == EX_register_a) begin
-                EX_forwarded_data_a = WB_result;
-            end
-        end
-
-        if (EX_register_b != 0) begin
-            if (MEM_control_write_register && MEM_destination_register == EX_register_b) begin
-                EX_forwarded_data_b = MEM_result;
-            end else if (WB_control_write_register && WB_destination_register == EX_register_b) begin
-                EX_forwarded_data_b = WB_result;
+        forwarding_id_rs1.data_forwarded = forwarding_id_rs1.data_original;
+        if (forwarding_id_rs1.a != 0) begin
+            if (forwarding_ex_result.we && forwarding_ex_result.a == forwarding_id_rs1.a) begin
+                forwarding_id_rs1.data_forwarded = forwarding_ex_result.data_original;
+            end else if (forwarding_mem_result.we && forwarding_mem_result.a == forwarding_id_rs1.a) begin
+                forwarding_id_rs1.data_forwarded = forwarding_mem_result.data_original;
+            end else if (forwarding_wb_result.we && forwarding_wb_result.a == forwarding_id_rs1.a) begin
+                forwarding_id_rs1.data_forwarded = forwarding_wb_result.data_original;
             end
         end
     end
 
-
-    always@* begin
-        ID_forwarded_data_a = ID_data_a;
-        ID_forwarded_data_b = ID_data_b;
-
-        if (ID_register_a != 0) begin
-            if (EX_control_write_register && EX_destination_register == ID_register_a) begin
-                ID_forwarded_data_a = EX_result;
-            end else if (MEM_control_write_register && MEM_destination_register == ID_register_a) begin
-                ID_forwarded_data_a = MEM_result;
-            end else if (WB_control_write_register && WB_destination_register == ID_register_a) begin
-                ID_forwarded_data_a = WB_result;
-            end
-        end
-
-        if (ID_register_b != 0) begin
-            if (EX_control_write_register && EX_destination_register == ID_register_b) begin
-                ID_forwarded_data_b = EX_result;
-            end else if (MEM_control_write_register && MEM_destination_register == ID_register_b) begin
-                ID_forwarded_data_b = MEM_result;
-            end else if (WB_control_write_register && WB_destination_register == ID_register_b) begin
-                ID_forwarded_data_b = WB_result;
+    // Forward ID rs2
+    always_comb begin
+        forwarding_id_rs2.data_forwarded = forwarding_id_rs2.data_original;
+        if (forwarding_id_rs2.a != 0) begin
+            if (forwarding_ex_result.we && forwarding_ex_result.a == forwarding_id_rs2.a) begin
+                forwarding_id_rs2.data_forwarded = forwarding_ex_result.data_original;
+            end else if (forwarding_mem_result.we && forwarding_mem_result.a == forwarding_id_rs2.a) begin
+                forwarding_id_rs2.data_forwarded = forwarding_mem_result.data_original;
+            end else if (forwarding_wb_result.we && forwarding_wb_result.a == forwarding_id_rs2.a) begin
+                forwarding_id_rs2.data_forwarded = forwarding_wb_result.data_original;
             end
         end
     end
 
-    /*
-        Forwarding unit:
-            - Forwards data from MEM and WB to EX
+    // Forward EX rs1
+    always_comb begin
+        forwarding_ex_rs1.data_forwarded = forwarding_ex_rs1.data_original;
+        if (forwarding_ex_rs1.a != 0) begin
+            if (forwarding_mem_result.we && forwarding_mem_result.a == forwarding_id_rs1.a) begin
+                forwarding_ex_rs1.data_forwarded = forwarding_mem_result.data_original;
+            end else if (forwarding_wb_result.we && forwarding_wb_result.a == forwarding_id_rs1.a) begin
+                forwarding_ex_rs1.data_forwarded = forwarding_wb_result.data_original;
+            end
+        end
+    end
 
-        Assumptions:
-            - If write_to_register is set, it will always write to that memory location
-
-        Pseudocode:
-            If MEM writes to reg X
-                forward to reg a if a == X
-            else if WB writes to reg X
-                forward to reg a if a == X
-
-            If MEM writes to reg X
-                forward to reg b if b == X
-            else if WB writes to reg X
-                forward to reg b if b == X
-    */
-endmodule
+    // Forward EX rs2
+    always_comb begin
+        forwarding_ex_rs2.data_forwarded = forwarding_ex_rs2.data_original;
+        if (forwarding_ex_rs2.a != 0) begin
+            if (forwarding_mem_result.we && forwarding_mem_result.a == forwarding_id_rs2.a) begin
+                forwarding_ex_rs2.data_forwarded = forwarding_mem_result.data_original;
+            end else if (forwarding_wb_result.we && forwarding_wb_result.a == forwarding_id_rs2.a) begin
+                forwarding_ex_rs2.data_forwarded = forwarding_wb_result.data_original;
+            end
+        end
+    end
+endinterface
