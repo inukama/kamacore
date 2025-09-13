@@ -1,8 +1,8 @@
 SRC_DIR = ../src
 TOP_MODULE = kamacore_top
 
-run:
-	./obj_dir/Vkamacore_top	
+run: 
+	./obj_dir/V$(TOP_MODULE)
 
 view:
 	gtkwave waveform.vcd

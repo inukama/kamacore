@@ -19,7 +19,8 @@ module kamacore_register_file(
     logic [CPU_WIDTH-1:0] registers [REGISTER_COUNT-1:0];
 
     always_ff @(posedge clk) begin
-        for (int i = 0; i < $size(registers); i++) begin  
+        registers[0] <= 0;
+        for (int i = 1; i < $size(registers); i++) begin  
             registers[i] <= (destination_we && (i == destination_a)) ? destination_data : registers[i];
             if (~rst) begin
                 registers[i] <= '0;
