@@ -21,7 +21,7 @@ module kamacore_register_file(
     always_ff @(posedge clk) begin
         registers[0] <= 0;
         for (int i = 1; i < $size(registers); i++) begin  
-            registers[i] <= (destination_we && (i == destination_a)) ? destination_data : registers[i];
+            registers[i] <= (destination_we && (i[REG_ADDR_WIDTH-1:0] == destination_a)) ? destination_data : registers[i];
             if (~rst) begin
                 registers[i] <= '0;
             end 

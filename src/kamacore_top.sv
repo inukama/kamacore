@@ -20,7 +20,7 @@ module kamacore_top(
     logic [REG_ADDR_WIDTH-1:0] writeback_rd_a;
     logic [CPU_WIDTH-1:0] writeback_rd_data;
 
-    kamacore_pipeline_stage stage_if_id(clk, rst, 0);
+    kamacore_pipeline_stage stage_if_id(clk, rst, 0); // TODO: Hold stages on hazard detection
     kamacore_pipeline_stage stage_id_ex(clk, rst, 0);
     kamacore_pipeline_stage stage_ex_mem(clk, rst, 0);
     kamacore_pipeline_stage stage_mem_wb(clk, rst, 0);

@@ -22,7 +22,7 @@ module kamacore_memory #(
     // TODO: Debug only
     initial begin
         for (int i = 3; i < 10; i++) begin
-            ram[i] = {12'd7, 5'd0, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE};
+            ram[i] = {12'd7, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE};
         end
     end
 
