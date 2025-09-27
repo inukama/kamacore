@@ -13,15 +13,16 @@ module kamacore_stage_if (
     logic [ADDR_WIDTH-1:0] program_counter;
     logic [ADDR_WIDTH-1:0] program_counter_next;
 
+    logic [CPU_WIDTH-1:0] _dpo_out;
     // Access instruction memory
-    kamacore_memory instruction_memory(
+    kamacore_memory instruction_memory( // TODO: Turn into Von Neumann Architecture
         .clk(clk),
         .we(0),
         .a(program_counter),
         .dpra(program_counter), // TODO: Can be used for something else
         .di(0),
         .spo(instruction),
-        .dpo()
+        .dpo(_dpo_out)
     );
     
     // Stage buffering

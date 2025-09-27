@@ -11,15 +11,16 @@ module kamacore_stage_mem (
 );
     logic [CPU_WIDTH-1:0] data_memory_result; 
 
+    logic [CPU_WIDTH-1:0] _dpo_out;
     // Access unmapped SRAM data memory cache
-    kamacore_memory data_memory(
+    kamacore_memory data_memory( // TODO: Turn into von-neumann architecture
         .clk(clk),
         .we(0), // TODO: Control signal
         .a(pipeline_ex_mem.alu_result),
         .dpra(0), // TODO: Can be used for something else
         .di(0), // TODO: source2
         .spo(data_memory_result),
-        .dpo()
+        .dpo(_dpo_out)
     );
 
     // Stage buffer

@@ -20,10 +20,10 @@ module kamacore_top(
     logic [REG_ADDR_WIDTH-1:0] writeback_rd_a;
     logic [CPU_WIDTH-1:0] writeback_rd_data;
 
-    kamacore_pipeline_stage stage_if_id(clk, rst);
-    kamacore_pipeline_stage stage_id_ex(clk, rst);
-    kamacore_pipeline_stage stage_ex_mem(clk, rst);
-    kamacore_pipeline_stage stage_mem_wb(clk, rst);
+    kamacore_pipeline_stage stage_if_id(clk, rst, 0);
+    kamacore_pipeline_stage stage_id_ex(clk, rst, 0);
+    kamacore_pipeline_stage stage_ex_mem(clk, rst, 0);
+    kamacore_pipeline_stage stage_mem_wb(clk, rst, 0);
 
     kamacore_forwarding_if forwarding_id_rs1();
     kamacore_forwarding_if forwarding_id_rs2();
