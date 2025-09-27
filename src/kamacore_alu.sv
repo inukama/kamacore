@@ -39,7 +39,7 @@ module kamacore_alu(
             {7'b0000000, 3'b101, OPCODE_R_TYPE}: alu_result = source1 >> source2[4:0]; // SRL
             {7'b0100000, 3'b101, OPCODE_R_TYPE}: alu_result = source1 >>> source2[4:0]; // SRA
             {7'b0000000, 3'b110, OPCODE_R_TYPE}: alu_result = source1 | source2; // OR
-            {7'b0000000, 3'b111, OPCODE_R_TYPE}: alu_result = source1 & source2; // OR
+            {7'b0000000, 3'b111, OPCODE_R_TYPE}: alu_result = source1 & source2; // AND
 
             // TODO: branch, load, store, jump
             default: alu_result = 32'd0000;
