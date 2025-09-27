@@ -11,7 +11,8 @@ module kamacore_stage_id (
     kamacore_pipeline_stage pipeline_if_id,
     kamacore_pipeline_stage pipeline_id_ex,
     kamacore_forwarding_if forwarding_rs1,
-    kamacore_forwarding_if forwarding_rs2
+    kamacore_forwarding_if forwarding_rs2,
+    output logic branch_valid
 );
     // Access register file
     kamacore_register_file register_file(

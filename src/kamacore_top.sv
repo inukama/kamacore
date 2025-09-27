@@ -19,6 +19,7 @@ module kamacore_top(
     logic writeback_rd_we;
     logic [REG_ADDR_WIDTH-1:0] writeback_rd_a;
     logic [CPU_WIDTH-1:0] writeback_rd_data;
+    logic branch_valid;
 
     kamacore_pipeline_stage stage_if_id(clk, rst, 0); // TODO: Hold stages on hazard detection
     kamacore_pipeline_stage stage_id_ex(clk, rst, 0);
@@ -36,7 +37,7 @@ module kamacore_top(
     /* verilator lint_off PINCONNECTEMPTY */
     kamacore_stage_if stage_if(
         .clk(clk), .rst(rst),
-        .branch_valid(),
+        .branch_valid(branch_valid),
         .pipeline_if_id(stage_if_id)
     );
 
@@ -50,7 +51,9 @@ module kamacore_top(
         .writeback_rd_data(writeback_rd_data),
 
         .forwarding_rs1(forwarding_id_rs1),
-        .forwarding_rs2(forwarding_id_rs2)
+        .forwarding_rs2(forwarding_id_rs2),
+
+        .branch_valid(branch_valid)
     );
 
     kamacore_stage_ex stage_ex(

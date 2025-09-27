@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.124 (w)1999-2025 BSI
+[*] Sat Sep 27 10:05:17 2025
+[*]
+[dumpfile] "/home/kommy/projects/hardware/kama_core/sim/waveform.vcd"
+[dumpfile_mtime] "Sat Sep 27 09:47:35 2025"
+[dumpfile_size] 67676
+[savefile] "/home/kommy/projects/hardware/kama_core/sim/debug_stages.gtkw"
+[timestart] 0
+[size] 1916 959
+[pos] -1 -1
+*-3.000000 12 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.kamacore_top.
+[treeopen] TOP.kamacore_top.forwarding_unit.
+[sst_width] 290
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 282
+@28
+TOP.kamacore_top.stage_id.register_file.clk
+@200
+-IF
+-ID
+@24
+TOP.kamacore_top.stage_id.register_file.registers[0][31:0]
+TOP.kamacore_top.stage_id.register_file.registers[1][31:0]
+@200
+-EX
+@24
+TOP.kamacore_top.stage_id_ex.rs1_data[31:0]
+TOP.kamacore_top.stage_ex.alu.source1[31:0]
+TOP.kamacore_top.stage_ex.alu.alu_result[31:0]
+@200
+-MEM
+@25
+TOP.kamacore_top.stage_ex_mem.alu_result[31:0]
+@200
+-WB
+[pattern_trace] 1
+[pattern_trace] 0
