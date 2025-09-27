@@ -19,7 +19,7 @@ module kamacore_alu(
     localparam funct7_x = 7'b???_???_?;
 
     always_comb begin
-        unique casex ({funct7, funct3, opcode7})
+        unique casez ({funct7, funct3, opcode7})
             {funct7_x, 3'b000, OPCODE_I_TYPE}: alu_result = source1 + imm11_signed; // ADDI
             {funct7_x, 3'b010, OPCODE_I_TYPE}: alu_result = {31'b0, source1 < imm11_signed}; // SLTI
             {funct7_x, 3'b011, OPCODE_I_TYPE}: alu_result = {31'b0, source1 < imm11_unsigned}; // SLTIU

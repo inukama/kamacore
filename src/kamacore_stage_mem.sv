@@ -39,7 +39,7 @@ module kamacore_stage_mem (
     end
 
     // TODO: Make this based on data mem result or alu depending on instruction
-    assign forwarding.data_original = pipeline_ex_mem.end_result;
+    assign forwarding.data_original = pipeline_ex_mem.alu_result;
     assign forwarding.we = pipeline_ex_mem.control_signals.rd_we;
-    assign forwarding.a = pipeline_ex_mem.destination_register;
+    assign forwarding.a = pipeline_ex_mem.instruction[11:7];
 endmodule

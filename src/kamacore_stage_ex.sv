@@ -34,7 +34,9 @@ module kamacore_stage_ex (
     end
 
     assign forwarding_rs1.data_original = pipeline_id_ex.rs1_data;
+    assign forwarding_rs1.a = pipeline_id_ex.instruction[19:15];
     assign forwarding_rs2.data_original = pipeline_id_ex.rs2_data;
+    assign forwarding_rs2.a = pipeline_id_ex.instruction[24:20];
     assign forwarding_result.a = pipeline_id_ex.instruction[11:7];
     assign forwarding_result.data_original = alu_result;    
 endmodule
