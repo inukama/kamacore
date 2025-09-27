@@ -12,7 +12,6 @@ module branching_unit(
 
     assign branch_offset = {instruction[31:25], instruction[11:7]};
 
-
     always_comb begin
         case ({funct3, opcode7})
             {000, OPCODE_SB_TYPE}:  branch_valid = source1 == source2; // BEQ
@@ -21,6 +20,7 @@ module branching_unit(
             {101, OPCODE_SB_TYPE}:  branch_valid = signed'(source1) >= signed'(source2); // BGE
             {111, OPCODE_SB_TYPE}:  branch_valid = unsigned'(source1) < unsigned'(source2); // BLTU
             {111, OPCODE_SB_TYPE}:  branch_valid = unsigned'(source1) >= unsigned'(source2); // BGEU
+            default: branch_valid = 0;
         endcase
     end
 endmodule
