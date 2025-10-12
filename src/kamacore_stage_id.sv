@@ -12,7 +12,8 @@ module kamacore_stage_id (
     kamacore_pipeline_stage pipeline_id_ex,
     kamacore_forwarding_if forwarding_rs1,
     kamacore_forwarding_if forwarding_rs2,
-    output logic branch_valid
+    output logic [CPU_WIDTH-1:0] register1_data,
+    output logic [CPU_WIDTH-1:0] register2_data
 );
     // Access register file
     kamacore_register_file register_file(
@@ -51,6 +52,9 @@ module kamacore_stage_id (
             pipeline_id_ex.control_signals <= control_signals;
         end
     end
+
+    assign register1_data = forwarding_rs1.data_forwarded;
+    assign register2_data = forwarding_rs2.data_forwarded;
 
     assign forwarding_rs1.a = pipeline_if_id.instruction[19:15];
     assign forwarding_rs2.a = pipeline_if_id.instruction[24:20];

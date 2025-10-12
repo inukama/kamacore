@@ -11,6 +11,7 @@
 `include "kamacore_control_unit.sv"
 `include "kamacore_forwarding_if.sv"
 `include "kamacore_forwarding_unit.sv"
+`include "kamacore_branching_unit.sv"
 
 module kamacore_top(
     input logic clk,
@@ -20,6 +21,10 @@ module kamacore_top(
     logic [REG_ADDR_WIDTH-1:0] writeback_rd_a;
     logic [CPU_WIDTH-1:0] writeback_rd_data;
     logic branch_valid;
+
+    logic [ADDR_WIDTH-1:0] branch_offset;
+    logic [CPU_WIDTH-1:0] register1_data;
+    logic [CPU_WIDTH-1:0] register2_data;
 
     kamacore_pipeline_stage stage_if_id(clk, rst, 0); // TODO: Hold stages on hazard detection
     kamacore_pipeline_stage stage_id_ex(clk, rst, 0);
@@ -38,7 +43,8 @@ module kamacore_top(
     kamacore_stage_if stage_if(
         .clk(clk), .rst(rst),
         .branch_valid(branch_valid),
-        .pipeline_if_id(stage_if_id)
+        .pipeline_if_id(stage_if_id),
+        .branch_offset(branch_offset)
     );
 
     kamacore_stage_id stage_id(
@@ -53,7 +59,16 @@ module kamacore_top(
         .forwarding_rs1(forwarding_id_rs1),
         .forwarding_rs2(forwarding_id_rs2),
 
-        .branch_valid(branch_valid)
+        .register1_data(register1_data),
+        .register2_data(register2_data)
+    );
+
+    kamacore_branching_unit branching_unit(
+        .instruction(stage_if_id.instruction),
+        .source1(register1_data),
+        .source2(register2_data),
+        .branch_valid(branch_valid),
+        .branch_offset(branch_offset)
     );
 
     kamacore_stage_ex stage_ex(

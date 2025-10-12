@@ -6,6 +6,7 @@ module kamacore_stage_if (
     input logic clk,
     input logic rst,
     input logic branch_valid,
+    input logic [ADDR_WIDTH-1:0] branch_offset, // TODO: Connnect this to the PC
     kamacore_pipeline_stage pipeline_if_id
 );
     // Program counter
@@ -37,6 +38,8 @@ module kamacore_stage_if (
     end
 
     always_comb begin
-        program_counter_next = program_counter + 1;
+        program_counter_next = branch_valid
+            ? program_counter + branch_offset
+            : program_counter + 1;
     end
 endmodule
