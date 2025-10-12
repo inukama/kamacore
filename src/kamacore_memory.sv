@@ -23,6 +23,7 @@ module kamacore_memory #(
     initial begin
         ram[1] = {12'd7, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE};
         ram[2] = {7'b111_1111, 5'd0, 5'd0, 3'd0, 5'b1_1101, OPCODE_SB_TYPE}; // Branch 2 backward
+        ram[3] = {12'hFFF, 5'd1, 3'd0, 5'd1, OPCODE_I_TYPE}; // This line should never execute
     end
 
     // TODO: This is pretty poorly written
