@@ -6,7 +6,7 @@ module kamacore_stage_if (
     input logic clk,
     input logic rst,
     input logic branch_valid,
-    input logic [ADDR_WIDTH-1:0] branch_offset, // TODO: Connnect this to the PC
+    input logic [ADDR_WIDTH-1:0] branch_offset,
     kamacore_pipeline_stage pipeline_if_id
 );
     // Program counter

@@ -10,7 +10,7 @@ module kamacore_branching_unit(
     logic [6:0] opcode7 = instruction[6:0];
     logic [2:0] funct3 = instruction[14:12]; 
 
-    assign branch_offset = 32'(signed'({instruction[31:25], instruction[11:7]}));
+    assign branch_offset = ADDR_WIDTH'(signed'({instruction[31:25], instruction[11:7]}));
 
     always_comb begin
         case ({funct3, opcode7})
